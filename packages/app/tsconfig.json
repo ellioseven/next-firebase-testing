@@ -19,20 +19,8 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@models/*": [
-        "models/*"
-      ],
-      "@services/*": [
-        "services/*"
-      ],
-      "@components/*": [
-        "components/*"
-      ],
-      "@constants/*": [
-        "constants/*"
-      ],
-      "@pages/*": [
-        "pages/*"
+      "@styles/*": [
+        "styles/*"
       ]
     }
   },
