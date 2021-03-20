@@ -1,8 +1,6 @@
-version: "2"
+version: "2.2"
 services:
   app:
-    depends_on:
-      - firebase
     build: ./.docker/node/build
     user: node
     network_mode: host
@@ -19,8 +17,16 @@ services:
     command: ["lerna", "run", "--stream", "dev"]
     ports:
       - 3000:3000
+    depends_on:
+      firebase:
+        condition: service_healthy
   firebase:
     build: ./.docker/node/build
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     user: node
     network_mode: host
     working_dir: /srv

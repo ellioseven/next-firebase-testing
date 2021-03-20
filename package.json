@@ -6,16 +6,23 @@
     "packages/*"
   ],
   "scripts": {
-    "firebase:seed": "ts-node ./scripts/seed.ts"
+    "firebase:seed": "ts-node ./scripts/seed.ts",
+    "test": "lerna run --stream test"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.21",
     "@types/node": "^14.14.35",
     "@types/react": "^17.0.3",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
     "firebase-functions-test": "^0.2.0",
     "firebase-tools": "^9.6.1",
+    "jest": "^26.6.3",
     "lerna": "^4.0.0",
     "microbundle": "^0.13.0",
+    "node-mocks-http": "^1.9.0",
     "prettier": "^2.2.1",
+    "ts-jest": "^26.5.4",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
   }

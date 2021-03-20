@@ -1,12 +1,7 @@
-import { collectionExample } from "@ellioseven/next-firebase-firebase"
+import { seed } from "@ellioseven/next-firebase-firebase";
 
 const main = async () => {
-  const data = {
-    id: "10",
-    name: "Example data"
-  }
+  await seed();
+};
 
-  await collectionExample.doc(data.id).set(data)
-}
-
-(async() => await main())()
+(async () => await main())();

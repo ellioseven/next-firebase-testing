@@ -7,8 +7,8 @@
   "module": "dist/index.module.js",
   "unpkg": "dist/index.umd.js",
   "scripts": {
-    "build": "microbundle",
-    "dev": "microbundle watch"
+    "build": "microbundle --no-compress --format=es,cjs,umd",
+    "dev": "yarn build --watch"
   },
   "dependencies": {
     "firebase": "^8.3.1",

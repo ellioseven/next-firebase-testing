@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest --runInBand"
   },
   "dependencies": {
     "antd": "^4.14.0",

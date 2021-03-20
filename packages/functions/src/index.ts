@@ -1,12 +1,9 @@
 import * as functions from "firebase-functions";
-import * as admin from "firebase-admin"
+import "@ellioseven/next-firebase-firebase";
 
-admin.initializeApp()
-
-export const outputExampleChange = functions
-  .firestore.document(`example/{id}`)
-  .onUpdate(async change => {
-    console.log("triggers")
+export const outputExampleChange = functions.firestore
+  .document(`example/{id}`)
+  .onUpdate(async (change) => {
     const data = change.before.data();
-    console.log(data)
+    console.log(data);
   });
