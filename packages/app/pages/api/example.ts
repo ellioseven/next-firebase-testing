@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import { db } from "@services/firebase"
+import { db } from "@ellioseven/next-firebase-firebase"
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   try {

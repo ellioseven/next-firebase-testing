@@ -1,11 +1,4 @@
-import * as admin from "firebase-admin";
-
-if (admin.apps.length === 0) {
-  admin.initializeApp();
-}
-
-const db = admin.firestore();
-const collection = db.collection("example");
+import { collectionExample } from "@ellioseven/next-firebase-firebase"
 
 const main = async () => {
   const data = {
@@ -13,7 +6,7 @@ const main = async () => {
     name: "Example data"
   }
 
-  await collection.doc(data.id).set(data)
+  await collectionExample.doc(data.id).set(data)
 }
 
 (async() => await main())()

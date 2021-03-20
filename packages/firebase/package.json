@@ -1,0 +1,17 @@
+{
+  "name": "@ellioseven/next-firebase-firebase",
+  "version": "0.1.0",
+  "private": true,
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "unpkg": "dist/index.umd.js",
+  "scripts": {
+    "build": "microbundle",
+    "dev": "microbundle watch"
+  },
+  "dependencies": {
+    "firebase": "^8.3.1",
+    "firebase-admin": "^9.2.0"
+  }
+}

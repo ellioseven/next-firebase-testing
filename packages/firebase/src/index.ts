@@ -5,4 +5,5 @@ if (admin.apps.length === 0) {
 }
 
 export const db = admin.firestore();
-export const collection = db.collection("example");
+
+export const collectionExample = db.collection("example");
