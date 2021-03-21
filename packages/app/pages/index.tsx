@@ -1,55 +1,10 @@
-import { useRouter } from "next/router";
-import {
-  Button,
-  Divider,
-  Form,
-  Input,
-  InputNumber,
-  Space,
-  Typography,
-} from "antd";
+import { FormUserScore } from "@components/FormUserScore/FormUserScore";
 import styles from "@styles/index.module.css";
 
-const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
-};
-
-const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
-};
-
 const Index = () => {
-  const router = useRouter();
-
-  // @todo Implement score logic.
-  const handleFinish = (values) => {
-    console.log(values);
-  };
-
-  const rules = [{ required: true, message: "Required" }];
-
   return (
     <div className={styles.page}>
-      <Space direction="vertical" style={{ width: "100%" }} size="large">
-        <Typography.Title level={2} style={{ margin: 0 }}>
-          Enter Your Score
-        </Typography.Title>
-        <Divider />
-        <Form onFinish={handleFinish} {...layout}>
-          <Form.Item label="Name" rules={rules} name="name">
-            <Input />
-          </Form.Item>
-          <Form.Item label="Score" rules={rules} name="score">
-            <InputNumber max={10} />
-          </Form.Item>
-          <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit">
-              Submit Your Score
-            </Button>
-          </Form.Item>
-        </Form>
-      </Space>
+      <FormUserScore />
     </div>
   );
 };

@@ -36,3 +36,5 @@ Heavily relies on Docker and Firebase emulators to simulate virtual production e
 - Cypress integration tests
 - Component unit tests
 - Example application implementation
+- Next.js app test environments
+- Husky hooks
