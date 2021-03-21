@@ -22,6 +22,9 @@
     "noImplicitReturns": true,
     "baseUrl": ".",
     "paths": {
+      "@pages/*": [
+        "pages/*"
+      ],
       "@styles/*": [
         "styles/*"
       ]
