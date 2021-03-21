@@ -5,6 +5,8 @@ An example application illustrating unit and integration testing strategies for 
 Example application implements a simple user generated score board, where users
 can enter their scores and view a generated leaderboard. The application is powered by Next.js, Firestore and Firebase Functions.
 
+Heavily relies on Docker and Firebase emulators to simulate virtual production environment.
+
 ## Features
 
 - Mocked data
@@ -15,6 +17,7 @@ can enter their scores and view a generated leaderboard. The application is powe
 
 ## Technologies
 
+- Docker
 - Next.js
 - Firebase (with emulators)
 - Cypress
