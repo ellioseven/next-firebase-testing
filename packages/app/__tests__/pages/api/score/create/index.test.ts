@@ -1,7 +1,8 @@
 import * as functions from "firebase-functions-test";
 import { config, seed } from "@ellioseven/next-firebase-firebase";
 import http from "node-mocks-http";
-import endpoint from "@pages/api/user/[id]";
+import { collections } from "@ellioseven/next-firebase-firebase";
+import endpoint from "@pages/api/score/create";
 
 const test = functions.default();
 
@@ -11,22 +12,26 @@ afterEach(async () => {
   });
 });
 
-it("gets user data", async () => {
+it("creates score", async () => {
   await seed();
 
   const response: any = http.createResponse();
   const request: any = http.createRequest({
-    method: "GET",
-    query: {
-      id: "10",
+    method: "POST",
+    body: {
+      name: "John",
+      score: 10,
     },
   });
 
   await endpoint(request, response);
-  const data = response._getJSONData();
 
-  expect(data).toEqual({
-    id: "10",
-    name: "Example data",
+  const scores = await collections.score.getScores();
+  const last = scores.pop();
+  const result = { name: last.name, score: last.score };
+
+  expect(result).toEqual({
+    name: "John",
+    score: 10,
   });
 });

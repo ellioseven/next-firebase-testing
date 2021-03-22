@@ -6,7 +6,16 @@
     "outDir": "lib",
     "sourceMap": true,
     "strict": true,
-    "target": "es2017"
+    "target": "es2017",
+    "baseUrl": "src",
+    "paths": {
+      "@collections/*": [
+        "collections/*"
+      ],
+      "@services/*": [
+        "services/*"
+      ]
+    }
   },
   "compileOnSave": true,
   "include": [
