@@ -23,6 +23,7 @@ Heavily relies on Docker and Firebase emulators to simulate virtual production e
 - Cypress
 - Jest
 - React Testing Library
+- MSW
 
 ### Supplementary
 
@@ -30,6 +31,14 @@ Heavily relies on Docker and Firebase emulators to simulate virtual production e
 - Lerna
 - Microbundle
 - TypeScript
+
+## Notes
+
+### App
+
+### Testing Environments
+
+Tests are split into two environments, node and browser. Certain modules require a specific runtime environment (Ant Design -> Browser, Firebase -> Node). To achieve this, different Jest configs are implemented with defined environments and test ignore paths.
 
 # Todo
 

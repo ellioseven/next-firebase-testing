@@ -1,8 +1,28 @@
 import { FormUserScore } from "./FormUserScore";
 import { render, waitFor, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { rest } from "msw";
+import { setupServer } from "msw/node";
+
+const server = setupServer();
+
+const mockEndpointScoreCreate = rest.post(
+  "http://localhost:3000/api/score/create",
+  (req, res, ctx) => {
+    console.log("resolved");
+    return res(ctx.json(true));
+  }
+);
+
+beforeAll(() => server.listen());
+
+afterEach(() => server.resetHandlers());
+
+afterAll(() => server.close());
 
 it("submits form", async () => {
+  server.use(mockEndpointScoreCreate);
+
   const wrapper = render(<FormUserScore />);
 
   const inputName = wrapper.container.querySelector(`input[id=name]`);
@@ -19,11 +39,10 @@ it("submits form", async () => {
     });
   }
 
-  await waitFor(() => {
-    const submit = wrapper.getByText("Submit Your Score");
-    userEvent.click(submit);
-  });
+  const submit = await waitFor(() => wrapper.getByText("Submit Your Score"));
 
-  const message = await wrapper.getByText("Score Submitted");
+  userEvent.click(submit);
+
+  const message = await waitFor(() => wrapper.getByText("Score Submitted"));
   expect(message).toBeInTheDocument();
 });

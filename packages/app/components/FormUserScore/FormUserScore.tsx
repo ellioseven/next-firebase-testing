@@ -22,7 +22,16 @@ const rules = [{ required: true, message: "Required" }];
 
 export const FormUserScore = () => {
   const handleFinish = async (values: any) => {
-    await message.success("Score Submitted");
+    fetch("http://localhost:3000/api/score/create", {
+      method: "POST",
+      body: JSON.stringify({
+        name: values.name,
+        score: values.score,
+      }),
+    })
+      .then((res) => res.json())
+      .then(() => message.success("Score Submitted"))
+      .catch((error) => message.error(error.toString()));
   };
 
   return (

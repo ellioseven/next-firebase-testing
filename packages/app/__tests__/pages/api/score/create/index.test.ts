@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions-test";
 import { config, seed } from "@ellioseven/next-firebase-firebase";
 import http from "node-mocks-http";
-import { collections } from "@ellioseven/next-firebase-firebase";
+import { getScores } from "@ellioseven/next-firebase-firebase";
 import endpoint from "@pages/api/score/create";
 
 const test = functions.default();
@@ -26,9 +26,9 @@ it("creates score", async () => {
 
   await endpoint(request, response);
 
-  const scores = await collections.score.getScores();
+  const scores = await getScores();
   const last = scores.pop();
-  const result = { name: last.name, score: last.score };
+  const result = { name: last?.name, score: last?.score };
 
   expect(result).toEqual({
     name: "John",
