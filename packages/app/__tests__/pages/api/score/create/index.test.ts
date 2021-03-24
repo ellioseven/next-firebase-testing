@@ -16,12 +16,13 @@ it("creates score", async () => {
   await seed();
 
   const response: any = http.createResponse();
+  // @todo Fix any.
   const request: any = http.createRequest({
     method: "POST",
-    body: {
+    body: JSON.stringify({
       name: "John",
       score: 10,
-    },
+    }) as any,
   });
 
   await endpoint(request, response);

@@ -3,10 +3,8 @@ import { createScore } from "@ellioseven/next-firebase-firebase";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const {
-      method,
-      body: { name, score },
-    } = req;
+    const { method, body } = req;
+    const { name, score } = JSON.parse(body);
 
     if (method !== "POST") {
       return res

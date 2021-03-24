@@ -46,6 +46,7 @@ Tests are split into two environments, node and browser. Certain modules require
 
 # Todo
 
+- Find alternative to JSON.stringify for payload data
 - Cypress integration tests
 - Example application implementation
 - Next.js app test environments

@@ -29,7 +29,10 @@ export const FormUserScore = () => {
         score: values.score,
       }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(res.statusText);
+        return res.json();
+      })
       .then(() => message.success("Score Submitted"))
       .catch((error) => message.error(error.toString()));
   };
