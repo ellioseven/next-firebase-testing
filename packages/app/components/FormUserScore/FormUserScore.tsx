@@ -20,6 +20,8 @@ const tailLayout = {
 
 const rules = [{ required: true, message: "Required" }];
 
+// @todo Add loading state.
+// @todo Clearn form state after successful submit.
 export const FormUserScore = () => {
   const handleFinish = async (values: any) => {
     fetch("http://localhost:3000/api/score/create", {
