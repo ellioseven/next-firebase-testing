@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Button,
   Divider,
@@ -23,7 +24,11 @@ const rules = [{ required: true, message: "Required" }];
 // @todo Add loading state.
 // @todo Clean form state after successful submit.
 export const FormUserScore = () => {
+  const form = Form.useForm();
+  const [isLoading, setLoading] = useState(false);
+
   const handleFinish = async (values: any) => {
+    setLoading(true);
     fetch("http://localhost:3000/api/score/create", {
       method: "POST",
       body: JSON.stringify({
@@ -35,8 +40,12 @@ export const FormUserScore = () => {
         if (!res.ok) throw new Error(res.statusText);
         return res.json();
       })
-      .then(() => message.success("Score Submitted"))
-      .catch((error) => message.error(error.toString()));
+      .then(() => {
+        message.success("Score Submitted");
+        form[0].resetFields();
+      })
+      .catch((error) => message.error(error.toString()))
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -45,15 +54,15 @@ export const FormUserScore = () => {
         Enter Your Score
       </Typography.Title>
       <Divider />
-      <Form onFinish={handleFinish} {...layout}>
+      <Form onFinish={handleFinish} {...layout} form={form[0]}>
         <Form.Item label="Name" rules={rules} name="name">
-          <Input />
+          <Input disabled={isLoading} />
         </Form.Item>
         <Form.Item label="Score" rules={rules} name="score">
-          <InputNumber max={10} />
+          <InputNumber disabled={isLoading} max={10} />
         </Form.Item>
         <Form.Item {...tailLayout}>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" loading={isLoading}>
             Submit Your Score
           </Button>
         </Form.Item>
