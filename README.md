@@ -27,7 +27,6 @@ Heavily relies on Docker and Firebase emulators to simulate virtual production e
 
 ### Supplementary
 
-- Ant Design: React component library.
 - Lerna: Monorepo management tool.
 - Microbundle: Package/Module bundler.
 - TypeScript: JavaScript subset.
