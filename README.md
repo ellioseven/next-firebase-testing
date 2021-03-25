@@ -52,3 +52,4 @@ Tests are split into two environments, node and browser. Certain modules require
 - Example application implementation
 - Next.js app test environments
 - Husky hooks
+- Deploy functions and application (Vercel?)
