@@ -21,8 +21,6 @@ const tailLayout = {
 
 const rules = [{ required: true, message: "Required" }];
 
-// @todo Add loading state.
-// @todo Clean form state after successful submit.
 export const FormUserScore = () => {
   const form = Form.useForm();
   const [isLoading, setLoading] = useState(false);
