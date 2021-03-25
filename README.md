@@ -47,6 +47,7 @@ Tests are split into two environments, node and browser. Certain modules require
 # Todo
 
 - Find alternative to JSON.stringify for payload data
+- Seed application on boot
 - Run test suite as a GitHub action
 - Cypress integration tests
 - Example application implementation
