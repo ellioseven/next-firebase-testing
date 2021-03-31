@@ -1,22 +1,17 @@
 import * as functions from "firebase-functions-test";
-import { config, seed } from "@ellioseven/next-firebase-firebase";
+import { config } from "@ellioseven/next-firebase-firebase";
 import http from "node-mocks-http";
 import { getScores } from "@ellioseven/next-firebase-firebase";
 import endpoint from "@pages/api/score/create";
 
-const test = functions.default();
+const test = functions.default(config);
 
 afterEach(async () => {
-  await test.firestore.clearFirestoreData({
-    projectId: config.projectId,
-  });
+  await test.firestore.clearFirestoreData(config);
 });
 
 it("creates score", async () => {
-  await seed();
-
   const response: any = http.createResponse();
-  // @todo Fix any.
   const request: any = http.createRequest({
     method: "POST",
     body: JSON.stringify({
