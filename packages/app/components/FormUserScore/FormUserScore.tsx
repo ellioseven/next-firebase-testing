@@ -9,6 +9,7 @@ import {
   Space,
   Typography,
 } from "antd";
+import Link from "next/link";
 
 const layout = {
   labelCol: { span: 8 },
@@ -51,6 +52,11 @@ export const FormUserScore = () => {
       <Typography.Title level={2} style={{ margin: 0 }}>
         Enter Your Score
       </Typography.Title>
+      <p>
+        <Link href="/top-scores">
+          <a>View Top Scores</a>
+        </Link>
+      </p>
       <Divider />
       <Form onFinish={handleFinish} {...layout} form={form[0]}>
         <Form.Item label="Name" rules={rules} name="name">
