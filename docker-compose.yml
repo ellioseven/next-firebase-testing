@@ -44,3 +44,21 @@ services:
       - 5001:5001
       - 8080:8080
       - 8081:8081
+  firebase-migrate:
+    build: ./.docker/node/build
+    user: node
+    network_mode: host
+    working_dir: /srv
+    env_file:
+      - ./.env
+    environment:
+      PATH: /srv/node_modules/.bin:$PATH
+      FIRESTORE_EMULATOR_HOST: localhost:8080
+    volumes:
+      - ./:/srv
+      - ./.docker/node/.cache:/home/node/.cache
+      - ./.docker/node/.config:/home/node/.config
+    command: ["yarn", "firebase:seed"]
+    depends_on:
+      firebase:
+        condition: service_healthy
