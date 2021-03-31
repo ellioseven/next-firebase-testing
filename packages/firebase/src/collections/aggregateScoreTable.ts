@@ -25,7 +25,7 @@ export const commitScoreToTable = async (score: Score) => {
   const isTopScore = table.some((topScore) => score.score > topScore.score);
 
   // Exit early if score isn't a winner.
-  if (!isTopScore) return;
+  if (table.length != 0 && !isTopScore) return;
 
   table.push(score);
 
