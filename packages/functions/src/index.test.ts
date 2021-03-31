@@ -1,5 +1,5 @@
 import * as functions from "firebase-functions-test";
-import { onScoreWriteUpdateTopScores } from "./index";
+import { onScoreWrite } from "./index";
 import waitForExpect from "wait-for-expect";
 import {
   config,
@@ -46,7 +46,7 @@ describe("top scores", () => {
 
     // Emulate document change to trigger function behaviour.
     const change = test.makeChange(null, snap);
-    const func = test.wrap(onScoreWriteUpdateTopScores);
+    const func = test.wrap(onScoreWrite);
     await func(change);
 
     await waitForExpect(async () => {
