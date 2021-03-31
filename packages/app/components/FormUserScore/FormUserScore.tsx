@@ -63,7 +63,7 @@ export const FormUserScore = () => {
           <Input disabled={isLoading} />
         </Form.Item>
         <Form.Item label="Score" rules={rules} name="score">
-          <InputNumber disabled={isLoading} max={10} />
+          <InputNumber disabled={isLoading} max={100} />
         </Form.Item>
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit" loading={isLoading}>
