@@ -1,0 +1,11 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "port": 3001,
+  "integrationFolder": "cypress/e2e",
+  "testFiles": "**/*.spec.js",
+  "video": false,
+  "viewportWidth": 1366,
+  "viewportHeight": 800,
+  "pageLoadTimeout": 100000,
+  "numTestsKeptInMemory": 0
+}

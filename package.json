@@ -7,9 +7,14 @@
   ],
   "scripts": {
     "firebase:seed": "ts-node ./scripts/seed.ts",
-    "test": "lerna run --stream test"
+    "test": "lerna run --stream test && yarn test:cypress",
+    "test:cypress": "cypress run --headless --config video=false",
+    "build": "yarn build:package && yarn build:app",
+    "build:package": "lerna run --stream build --ignore '@ellioseven/next-firebase-app'",
+    "build:app": "lerna run --stream build --scope=@ellioseven/next-firebase-app"
   },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^1.2.6",
     "@types/jest": "^26.0.21",
     "@types/node": "^14.14.35",
     "@types/react": "^17.0.3",

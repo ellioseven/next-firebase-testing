@@ -9,17 +9,12 @@ services:
       - ./.env
     environment:
       PATH: /srv/node_modules/.bin:$PATH
-      FIRESTORE_EMULATOR_HOST: localhost:8080
     volumes:
       - ./:/srv
       - ./.docker/node/.cache:/home/node/.cache
       - ./.docker/node/.config:/home/node/.config
-    command: ["lerna", "run", "--stream", "dev"]
     ports:
       - 3000:3000
-    depends_on:
-      firebase:
-        condition: service_healthy
   firebase:
     build: ./.docker/node/build
     healthcheck:
@@ -34,7 +29,6 @@ services:
       - ./.env
     environment:
       PATH: /srv/node_modules/.bin:$PATH
-      FIRESTORE_EMULATOR_HOST: localhost:8080
     volumes:
       - ./:/srv
       - ./.docker/node/.cache:/home/node/.cache
@@ -53,12 +47,8 @@ services:
       - ./.env
     environment:
       PATH: /srv/node_modules/.bin:$PATH
-      FIRESTORE_EMULATOR_HOST: localhost:8080
     volumes:
       - ./:/srv
       - ./.docker/node/.cache:/home/node/.cache
       - ./.docker/node/.config:/home/node/.config
     command: ["yarn", "firebase:seed"]
-    depends_on:
-      firebase:
-        condition: service_healthy

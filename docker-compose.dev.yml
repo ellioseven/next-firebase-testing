@@ -1,0 +1,21 @@
+version: "2.2"
+services:
+  app:
+    extends:
+      service: app
+      file: docker-compose.yml
+    depends_on:
+      firebase:
+        condition: service_healthy
+    command: ["lerna", "run", "--stream", "dev", "--scope=@ellioseven/next-firebase-app"]
+  firebase:
+    extends:
+      service: firebase
+      file: docker-compose.yml
+  firebase-migrate:
+    extends:
+      service: firebase-migrate
+      file: docker-compose.yml
+    depends_on:
+      firebase:
+        condition: service_healthy

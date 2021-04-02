@@ -1,0 +1,4 @@
+FROM cypress/included:6.8.0
+USER node
+ENV PATH $PATH:/e2e/node_modules/.bin
+WORKDIR /e2e

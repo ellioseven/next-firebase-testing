@@ -1,0 +1,37 @@
+version: "2.2"
+services:
+  app:
+    extends:
+      service: app
+      file: docker-compose.yml
+    command: ["lerna", "run", "--stream", "start", "--scope=@ellioseven/next-firebase-app"]
+    depends_on:
+      firebase:
+        condition: service_healthy
+    ports:
+      - 3000:3000
+  test:
+    build: ./.docker/cypress/build
+    entrypoint: ""
+    command: ["yarn", "test"]
+    network_mode: host
+    env_file:
+      - ./.env
+    privileged: true
+    stdin_open: true
+    shm_size: 2g
+    environment:
+      PATH: /srv/node_modules/.bin:$PATH
+    depends_on:
+      app:
+        condition: service_started
+    volumes:
+      - ./:/e2e
+      - ./.docker/node/.cache:/home/node/.cache
+      - ./.docker/node/.config:/home/node/.config
+  firebase:
+    extends:
+      service: firebase
+      file: docker-compose.yml
+networks:
+  default:
