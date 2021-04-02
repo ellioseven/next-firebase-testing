@@ -2,7 +2,6 @@ version: "2.2"
 services:
   app:
     build: ./.docker/node/build
-    user: node
     network_mode: host
     working_dir: /srv
     env_file:
@@ -22,7 +21,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    user: node
     network_mode: host
     working_dir: /srv
     env_file:
@@ -40,7 +38,6 @@ services:
       - 8081
   firebase-migrate:
     build: ./.docker/node/build
-    user: node
     network_mode: host
     working_dir: /srv
     env_file:
