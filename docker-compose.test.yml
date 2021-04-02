@@ -8,8 +8,6 @@ services:
     depends_on:
       firebase:
         condition: service_healthy
-    ports:
-      - 3000:3000
   test:
     build: ./.docker/cypress/build
     entrypoint: ""
