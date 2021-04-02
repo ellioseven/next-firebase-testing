@@ -37,12 +37,21 @@ Heavily relies on Docker and Firebase emulators to simulate virtual production e
 - Microbundle: Allows packages to effectively share code between each other, with a much cleaner import syntax, eg: `@foo/service` instead of `@foo/service/src/foo`. Microbundle is a simple and easy solution to packaging TypeScript modules.
 - TypeScript: Extremely popular TypeScript subset, I chose TypeScript as it's used on most production systems I work on professionally.
 
+## Usage
+
+```
+# Start development version.
+./bin/dev
+
+# Run application tests.
+./bin/test
+
+# Build packages.
+./bin/build:packages
+```
+
 # Todo
 
-- Find alternative to JSON.stringify for payload data
 - Run test suite as a GitHub action
-- Cypress integration tests
-- Example application implementation
-- Next.js app test environments
 - Husky hooks
 - Deploy functions and application (Vercel?)
