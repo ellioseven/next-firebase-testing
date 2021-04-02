@@ -7,7 +7,6 @@ jobs:
       name: docker/docker
     steps:
       - checkout
-      - docker/install-docker-tools
       - run:
           name: Configure environment
           command: |
