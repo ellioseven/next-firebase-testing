@@ -18,5 +18,6 @@ jobs:
           echo "GCLOUD_PROJECT=$GCLOUD_PROJECT" >> .env
           echo "FIRESTORE_EMULATOR_HOST=localhost:8080" >> .env
       - run: sudo chown -R 1000:1000 ./
+      - run: docker-compose build
       - run: ./bin/install
       - run: ./bin/test
