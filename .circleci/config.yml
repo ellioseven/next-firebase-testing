@@ -8,11 +8,19 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Configure environment
+          name: Configure
           command: |
             echo "GCLOUD_PROJECT=$GCLOUD_PROJECT" >> .env
             echo "FIRESTORE_EMULATOR_HOST=localhost:8080" >> .env
       - run:
-          name: Build services
+          name: Build
           command: |
             docker-compose build
+      - run:
+          name: Install
+          command: |
+            ./bin/install
+      - run:
+          name: Test
+          command: |
+            ./bin/test
