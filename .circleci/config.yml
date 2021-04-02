@@ -16,7 +16,7 @@ jobs:
           name: Build
           command: |
             docker-compose build
-            sudo chown -R 1000:100 ./
+            sudo chown -R 1000:1000 ./
       - run:
           name: Install
           command: |
