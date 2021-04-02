@@ -5,11 +5,14 @@ jobs:
   build:
     executor:
       name: docker/docker
-    environment:
-      
     steps:
       - checkout
       - docker/install-docker-tools
+      - run:
+          name: Configure environment
+          command: |
+            echo "GCLOUD_PROJECT=$GCLOUD_PROJECT" >> .env
+            echo "FIRESTORE_EMULATOR_HOST=localhost:8080" >> .env
       - run:
           name: Build services
           command: |
