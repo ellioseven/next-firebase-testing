@@ -11,11 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: whoami
       - shell: bash
         env:
           GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
         run: |
           echo "GCLOUD_PROJECT=$GCLOUD_PROJECT" >> .env
           echo "FIRESTORE_EMULATOR_HOST=localhost:8080" >> .env
-      - run: sudo ./bin/install
-      - run: sudo ./bin/test
+      - run: ./bin/install
+      - run: ./bin/test
