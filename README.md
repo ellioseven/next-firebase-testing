@@ -62,3 +62,5 @@ cp .firebaserc.example .firebaserc
 - Run test suite as a GitHub action
 - Husky hooks
 - Deploy functions and application (Vercel?)
+
+A
