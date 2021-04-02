@@ -17,5 +17,5 @@ jobs:
         run: |
           echo "GCLOUD_PROJECT=$GCLOUD_PROJECT" >> .env
           echo "FIRESTORE_EMULATOR_HOST=localhost:8080" >> .env
-      - run: ./bin/install
-      - run: ./bin/test
+      - run: sudo ./bin/install
+      - run: sudo ./bin/test
