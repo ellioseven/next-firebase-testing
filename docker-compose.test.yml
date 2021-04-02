@@ -31,5 +31,3 @@ services:
     extends:
       service: firebase
       file: docker-compose.yml
-networks:
-  default:
