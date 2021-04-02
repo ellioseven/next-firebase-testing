@@ -40,6 +40,10 @@ Heavily relies on Docker and Firebase emulators to simulate virtual production e
 ## Usage
 
 ```
+# Configure environment.
+cp .env.example .env
+cp .firebaserc.example .firebaserc
+
 # Start development version.
 ./bin/dev
 
