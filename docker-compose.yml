@@ -13,7 +13,7 @@ services:
       - ./:/srv
       - ./.docker/node/.cache:/home/node/.cache
       - ./.docker/node/.config:/home/node/.config
-    ports:
+    expose:
       - 3000
   firebase:
     build: ./.docker/node/build
@@ -34,7 +34,7 @@ services:
       - ./.docker/node/.cache:/home/node/.cache
       - ./.docker/node/.config:/home/node/.config
     command: ["yarn", "firebase", "emulators:start"]
-    ports:
+    expose:
       - 5001
       - 8080
       - 8081
