@@ -1,9 +1,13 @@
 version: 2.1
 orbs:
   docker: circleci/docker@1.5.0
-workflows:
+jobs:
   build:
-    jobs:
+    executor:
+      name: docker/docker
+    steps:
+      - checkout
+      - docker/install-docker-tools
       - run:
           name: Build services
           command: |
