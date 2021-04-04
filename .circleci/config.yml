@@ -8,8 +8,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Prepare
-        command: sudo apt-get install curl
+          name: Prepare
+          command: sudo apt-get install curl
       - run:
           name: Configure
           command: |
