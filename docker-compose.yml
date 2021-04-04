@@ -12,8 +12,8 @@ services:
       - ./:/srv
       - ./.docker/node/.cache:/home/node/.cache
       - ./.docker/node/.config:/home/node/.config
-    expose:
-      - 3000
+    ports:
+      - 3000:3000
   firebase:
     build: ./.docker/node/build
     healthcheck:
@@ -32,10 +32,10 @@ services:
       - ./.docker/node/.cache:/home/node/.cache
       - ./.docker/node/.config:/home/node/.config
     command: ["yarn", "firebase", "emulators:start"]
-    expose:
-      - 5001
-      - 8080
-      - 8081
+    ports:
+      - 5001:5001
+      - 8080:8080
+      - 8081:8081
   firebase-migrate:
     build: ./.docker/node/build
     network_mode: host
