@@ -8,9 +8,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Prepare
-          command: sudo apt-get install curl
-      - run:
           name: Configure
           command: |
             echo "GCLOUD_PROJECT=$GCLOUD_PROJECT" >> .env

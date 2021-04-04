@@ -32,7 +32,7 @@ services:
       - ./.docker/node/.cache:/home/node/.cache
       - ./.docker/node/.config:/home/node/.config
     command: ["yarn", "firebase", "emulators:start"]
-    ports:
+    expose:
       - 5001
       - 8080
       - 8081
