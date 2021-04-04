@@ -11,6 +11,7 @@ jobs:
           name: Configure
           command: |
             echo "GCLOUD_PROJECT=$GCLOUD_PROJECT" >> .env
+            echo "FIREBASE_TOKEN=$FIREBASE_TOKEN" >> .env
             echo "FIRESTORE_EMULATOR_HOST=localhost:8080" >> .env
       - run:
           name: Build
@@ -21,6 +22,9 @@ jobs:
           name: Install
           command: |
             ./bin/install
+      - run:
+          name: Initialise Firebase
+          command: yarn firebase use next-firebase-f455c
       - run:
           name: Test
           command: |
