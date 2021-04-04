@@ -24,7 +24,7 @@ jobs:
             ./bin/install
       - run:
           name: Initialise Firebase
-          command: yarn firebase use next-firebase-f455c
+          command: yarn firebase use $GCLOUD_PROJECT
       - run:
           name: Test
           command: |
