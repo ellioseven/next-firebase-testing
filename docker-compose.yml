@@ -1,6 +1,6 @@
 version: "2.2"
 services:
-  app:
+  node:
     build: ./.docker/node/build
     network_mode: host
     working_dir: /srv
@@ -12,6 +12,9 @@ services:
       - ./:/srv
       - ./.docker/node/.cache:/home/node/.cache
       - ./.docker/node/.config:/home/node/.config
+  app:
+    extends:
+      service: node
     expose:
       - 3000
   firebase:
