@@ -8,10 +8,6 @@ save_cache: &save_cache
   paths:
     - ./.docker/node/.cache
   key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-cache_remote_images:
-  docker:
-    - image: node:12-alpine
-    - image: cypress/included:6.8.0
 jobs:
   build:
     machine:
@@ -25,9 +21,6 @@ jobs:
             echo "FIREBASE_TOKEN=$FIREBASE_TOKEN" >> .env
             echo "FIRESTORE_EMULATOR_HOST=localhost:8080" >> .env
       - restore_cache: *restore_cache
-      - cache-remote-images:
-          steps:
-            - cache_remote_images
       - run:
           name: Build
           command: |
