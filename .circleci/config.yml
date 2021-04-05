@@ -8,12 +8,17 @@ save_cache: &save_cache
   paths:
     - ./.docker/node/.cache
   key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+cache_remote_images:
+  docker:
+    - image: node:12-alpine
+    - image: cypress/included:6.8.0
 jobs:
   build:
     machine:
       image: ubuntu-2004:202101-01
     steps:
       - checkout
+      - cache_remote_images
       - run:
           name: Configure
           command: |
