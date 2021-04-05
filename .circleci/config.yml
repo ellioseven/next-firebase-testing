@@ -18,7 +18,6 @@ jobs:
       image: ubuntu-2004:202101-01
     steps:
       - checkout
-      - cache_remote_images
       - run:
           name: Configure
           command: |
@@ -26,6 +25,9 @@ jobs:
             echo "FIREBASE_TOKEN=$FIREBASE_TOKEN" >> .env
             echo "FIRESTORE_EMULATOR_HOST=localhost:8080" >> .env
       - restore_cache: *restore_cache
+      - cache-remote-images:
+          steps:
+            - cache_remote_images
       - run:
           name: Build
           command: |
