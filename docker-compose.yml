@@ -1,6 +1,6 @@
 version: "2.2"
 services:
-  app:
+  node:
     build: ./.docker/node/build
     network_mode: host
     working_dir: /srv
@@ -12,6 +12,9 @@ services:
       - ./:/srv
       - ./.docker/node/.cache:/home/node/.cache
       - ./.docker/node/.config:/home/node/.config
+  app:
+    extends:
+      service: node
     expose:
       - 3000
   firebase:
@@ -19,7 +22,7 @@ services:
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080"]
       interval: 10s
-      timeout: 5s
+      timeout: 60s
       retries: 5
     network_mode: host
     working_dir: /srv

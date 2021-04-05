@@ -1,0 +1,40 @@
+version: 2.1
+restore_cache: &restore_cache
+  keys:
+    - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+    - yarn-packages-v1-{{ .Branch }}-
+    - yarn-packages-v1-
+save_cache: &save_cache
+  paths:
+    - ./.docker/node/.cache
+  key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+jobs:
+  build:
+    machine:
+      image: ubuntu-2004:202101-01
+    steps:
+      - checkout
+      - run:
+          name: Configure
+          command: |
+            echo "GCLOUD_PROJECT=$GCLOUD_PROJECT" >> .env
+            echo "FIREBASE_TOKEN=$FIREBASE_TOKEN" >> .env
+            echo "FIRESTORE_EMULATOR_HOST=localhost:8080" >> .env
+      - restore_cache: *restore_cache
+      - run:
+          name: Build
+          command: |
+            docker-compose build
+            sudo chown -R 1000:1000 ./
+      - run:
+          name: Install
+          command: |
+            ./bin/install
+      - save_cache: *save_cache
+      - run:
+          name: Initialise Firebase
+          command: yarn firebase use $GCLOUD_PROJECT
+      - run:
+          name: Test
+          command: |
+            ./bin/test

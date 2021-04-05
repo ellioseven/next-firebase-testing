@@ -1,4 +1,3 @@
 #!/usr/bin/env sh
 
-docker-compose -f docker-compose.dev.yml run app --rm yarn build:package \
-  || docker-compose -f docker-compose.dev.yml exec app yarn build:package
+docker-compose -f docker-compose.dev.yml run node --rm yarn build:package
