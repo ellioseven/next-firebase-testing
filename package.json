@@ -11,7 +11,8 @@
     "test:cypress": "cypress run --headless --config video=false",
     "build": "yarn build:package && yarn build:app",
     "build:package": "lerna run --stream build --ignore '@ellioseven/next-firebase-app' --include-dependencies",
-    "build:app": "lerna run --include-dependencies --stream build --scope=@ellioseven/next-firebase-app"
+    "build:app": "lerna run --include-dependencies --stream build --scope=@ellioseven/next-firebase-app",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@firebase/rules-unit-testing": "^1.2.6",
@@ -25,6 +26,7 @@
     "cypress": "^6.8.0",
     "firebase-functions-test": "^0.2.0",
     "firebase-tools": "^9.8.0",
+    "husky": "^6.0.0",
     "jest": "^26.6.3",
     "lerna": "^4.0.0",
     "microbundle": "^0.13.0",

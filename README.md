@@ -31,6 +31,7 @@ Heavily relies on Docker and Firebase emulators to simulate virtual production e
 
 - Lerna: Monorepo management tool.
 - Microbundle: Package/Module bundler.
+- Husky: Git hooks.
 - TypeScript: JavaScript subset.
 
 ### Why Did I Use
