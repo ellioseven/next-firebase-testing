@@ -1,5 +1,9 @@
 version: "2.2"
 services:
+  node:
+    extends:
+      service: node
+      file: docker-compose.yml
   app:
     extends:
       service: app
@@ -20,6 +24,7 @@ services:
     shm_size: 2g
     environment:
       PATH: /srv/node_modules/.bin:$PATH
+      DISPLAY:
     depends_on:
       app:
         condition: service_started

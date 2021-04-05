@@ -1,5 +1,9 @@
 version: "2.2"
 services:
+  node:
+    extends:
+      service: node
+      file: docker-compose.yml
   app:
     extends:
       service: app
