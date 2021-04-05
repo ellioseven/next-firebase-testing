@@ -25,7 +25,7 @@ Heavily relies on Docker and Firebase emulators to simulate virtual production e
 - Jest: Automated testing framework.
 - React Testing Library: Automated React testing library.
 - MSW: API mocking library.
-- CircleCI: Continous integration & delivery SaaS.
+- CircleCI: Continuous integration & delivery SaaS.
 
 ### Supplementary
 
@@ -70,7 +70,3 @@ You will need to provide two environment variables for the CI process to work:
 ### Generating a Token
 
 Run `docker-compose run --rm node firebase login:ci` and follow the browser prompts to generate a token. Import this token as an environment variable into the CI system.
-
-# Todo
-
-- Husky hooks
