@@ -14,6 +14,7 @@ Heavily relies on Docker and Firebase emulators to simulate virtual production e
 - Component Unit Tests
 - API Integration Tests
 - Application Integration Tests
+- CircleCI Integration
 
 ## Technologies
 
@@ -24,6 +25,7 @@ Heavily relies on Docker and Firebase emulators to simulate virtual production e
 - Jest: Automated testing framework.
 - React Testing Library: Automated React testing library.
 - MSW: API mocking library.
+- CircleCI: Continous integration & delivery SaaS.
 
 ### Supplementary
 
@@ -62,3 +64,4 @@ cp .firebaserc.example .firebaserc
 - Run test suite as a GitHub action
 - Husky hooks
 - Deploy functions and application (Vercel?)
+- Cache node/cypress images in CI
