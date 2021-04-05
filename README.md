@@ -59,9 +59,17 @@ cp -f .firebaserc.example .firebaserc
 ./bin/build:packages
 ```
 
+## CI Installation
+
+You will need to provide two environment variables for the CI process to work:
+
+- `GCLOUD_PROJECT`
+- `FIREBASE_TOKEN`
+
+### Generating a Token
+
+Run `docker-compose run --rm node firebase login:ci` and follow the browser prompts to generate a token. Import this token as an environment variable into the CI system.
+
 # Todo
 
-- Run test suite as a GitHub action
 - Husky hooks
-- Deploy functions and application (Vercel?)
-- Cache node/cypress images in CI

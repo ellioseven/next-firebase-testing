@@ -1,3 +1,7 @@
+# NOTE: This CI process could be more efficient. There are some wasteful steps
+# that could be optimised:
+# - Cache remote Docker images
+# - Bake Firebase emulator install into the image
 version: 2.1
 restore_cache: &restore_cache
   keys:
