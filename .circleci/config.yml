@@ -6,7 +6,7 @@ restore_cache: &restore_cache
     - yarn-packages-v1-
 save_cache: &save_cache
   paths:
-    - ./.docker/node.cache
+    - ./.docker/node/.cache
   key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
 jobs:
   build:
