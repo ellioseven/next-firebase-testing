@@ -22,7 +22,7 @@ The repo contains a simple application that allows a user to enter a score, whic
 - Docker: Virtualised environments for application & Firebase runtimes
 - Next.js: Popular React application runtime
 - Firebase: Popular database and serverless function infrastructure
-- Cypress: Automated integration testing runner
+- Cypress: Automated browser simulation for integration tests
 - Jest: Automated testing framework
 - React Testing Library: Automated React testing library
 - MSW: API mocking library
