@@ -27,6 +27,7 @@ The repo contains a simple application that allows a user to enter a score, whic
 - React Testing Library: Automated React testing library
 - MSW: API mocking library
 - CircleCI: Continuous integration & delivery SaaS
+- Husky: Bootstrap local development with Git hooks to run tests on Git events
 
 ### Structure
 
@@ -49,6 +50,8 @@ Mono-repositories are a popular paradigm these days, which has created some prob
 
 Firebase provides emulators that mimic some of their cloud services such as Firestore and Functions. This is extremely helpful, but getting the environment set up can be confusing and time confusing (system dependencies, environment variables, configuration, etc.). Grokking how to test assert Firestore data and test serverless functions can be difficult. This repository attempts to illustrate testing problems and how I overcome them.
 
+I've also included CircleCI integration to show how the test environment can be built in a CI process. I use the [machine type executor](https://circleci.com/docs/2.0/executor-types/#using-machine) which provides a VM with full network management and Docker utilities. This makes it easy to use Docker's "host network mode", which simplifies container networking.
+
 ## Testing Strategies
 
 ### React Unit Tests
@@ -61,10 +64,8 @@ Examples include how to pre-populate and tear down the emulated Firebase environ
 
 ### Firebase Functions Tests
 
-Firebase comes with testing libraries which help interact with emulated environments. I've included some examples that pre-populate Firestore and run simulated snapshots. Testing functions can be tricky, as they run as synchronous background tasks, meaning they can't be simply changed and asserted. I've provided a simple solution to overcome this problem.
+Firebase comes with testing libraries which help interact with emulated environments. I've included some examples that pre-populate Firestore and run simulated snapshots. Testing functions can be tricky, as they run as synchronous background tasks, meaning they can't be simply changed and asserted. This can also cause potential race conditions. I've provided a simple solution to overcome this problem.
 
-- Firebase Functions tests
-- E2E Tests
-- CI Integration
-- Challenges/Solutions
-  - Firebase Functions testing (race conditions)
+### E2E Tests
+
+End to end tests are managed with Cypress. Before Cypress can be launched, packages are built, the emulators are run, data is seeded, then the Next.js is booted in production mode. This prevents any problems with having to wait for pages to compile, which can cause timeout issues. The timing sequence is managed by Docker Compose, which will checked for healthy services before running appropriate tasks.
