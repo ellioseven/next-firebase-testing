@@ -46,7 +46,7 @@ Docker is used to make it as easier as a simple command to build all the system 
 
 During local development, seed data is injected to create a controllable and reliable test data for tests and local development. When the application boots, a history of scores and a leaderboard is already created. This provides consistent data across the development and testing team. This is done in a Docker service, which will wait for the Firebase emulators to become healthy before migration.
 
-Mono-repositories are a popular paradigm these days, which has created some problems, such as build dependencies. I have implemented this approach to illustrate my solutions with [Lerna](https://github.com/lerna/lerna).
+Mono-repositories are a popular paradigm these days, which has created some problems, such as bundler and build dependencies. I have implemented this approach to illustrate my solutions with [Lerna](https://github.com/lerna/lerna).
 
 Firebase provides emulators that mimic some of their cloud services such as Firestore and Functions. This is extremely helpful, but getting the environment set up can be confusing and time confusing (system dependencies, environment variables, configuration, etc.). Grokking how to test assert Firestore data and test serverless functions can be difficult. This repository attempts to illustrate testing problems and how I overcome them.
 
