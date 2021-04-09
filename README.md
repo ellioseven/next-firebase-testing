@@ -1,4 +1,4 @@
-# Next.js + Firebase Testing Strategies
+# Next.js + Firebase TDD
 
 A TDD environment illustrating unit and integration testing strategies for Next.js + Firebase (Firestore & Functions) applications.
 
