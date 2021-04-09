@@ -29,14 +29,18 @@ describe("top scores", () => {
       { name: "Bobby", score: 20 },
     ];
 
-    // Write table.
+    // Pre-populate Firestore with score table.
     for (const index in scores) {
       const score = scores[index];
       await collectionAggregateScoreTable.doc(index.toString()).set(score);
     }
 
+    // As we are emulating document creation, the before data should be null.
+    // Change null to a value to simulate a change in existing data.
+    const snapBefore = null;
+
     // Make snapshot for state of database after the change
-    const snap = test.firestore.makeDocumentSnapshot(
+    const snapAfter = test.firestore.makeDocumentSnapshot(
       {
         name: "Jill",
         score: 95,
@@ -45,10 +49,14 @@ describe("top scores", () => {
     );
 
     // Emulate document change to trigger function behaviour.
-    const change = test.makeChange(null, snap);
+    // This doesn't persist any data to Firestore, it will only simulate the
+    // behaviour or the document changes.
+    const change = test.makeChange(snapBefore, snapAfter);
     const func = test.wrap(onScoreWrite);
     await func(change);
 
+    // Functions run synchronous in the background, which means we have to
+    // "wait and retry" to be able to assert data.
     await waitForExpect(async () => {
       const table = await getScoreTable();
       expect(table).toEqual([
