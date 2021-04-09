@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-docker-compose -f docker-compose.dev.yml run node --rm yarn build:package
+docker-compose run node --rm yarn build:package
